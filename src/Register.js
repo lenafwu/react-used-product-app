@@ -5,6 +5,8 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useAuth from "./hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 import axios from "./api/axios";
 
 // TODO: add validation for user input
@@ -14,6 +16,8 @@ const PWD_REGEX =
 const REGISTER_URL = "/api/signup";
 
 const Register = () => {
+  const { auth, setAuth } = useAuth();
+  const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -78,11 +82,15 @@ const Register = () => {
         }
       );
       setSuccess(true);
-      console.log(response.data.token);
       // clear input fields
       setUser("");
       setPwd("");
       setMatchPwd("");
+
+      // set auth
+      setAuth({ user, accessToken: response?.data?.accessToken });
+      // proceed to add profile
+      navigate("/update-profile", { replace: true });
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No response");

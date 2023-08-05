@@ -29,12 +29,10 @@ const Profile = () => {
     <div>
       <h1>Profile</h1>
       <p>Username: {userProfile.username}</p>
-      <p>First Name: {userProfile.firstname}</p>
-      <p>Last Name: {userProfile.lastname}</p>
+      <p>Name: {userProfile.firstname + " " + userProfile.lastname}</p>
       <p>Address: {userProfile.address}</p>
       <p>Email: {userProfile.email}</p>
       <p>Phone: {userProfile.phone}</p>
-      <p>Is Admin: {userProfile.isAdmin ? "Yes" : "No"}</p>
       <p>Created: {new Date(userProfile.created).toLocaleDateString()}</p>
       <Link to="/update-profile">
         <button>Update</button>

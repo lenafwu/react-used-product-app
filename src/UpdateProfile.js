@@ -7,12 +7,36 @@ const UPDATE_PROFILE_URL = "/api/profile";
 
 const UpdateProfile = () => {
   const { auth } = useAuth();
+  console.log();
   const navigate = useNavigate();
-  const [firstname, setFirstname] = useState(auth.user?.firstname || "");
-  const [lastname, setLastname] = useState(auth.user?.lastname || "");
-  const [address, setAddress] = useState(auth.user?.address || "");
-  const [email, setEmail] = useState(auth.user?.email || "");
-  const [phone, setPhone] = useState(auth.user?.phone || "");
+
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const response = await axios.get(UPDATE_PROFILE_URL, {
+          headers: {
+            withCredentials: true,
+            Authorization: `Bearer ${auth.accessToken}`,
+          },
+        });
+
+        setFirstname(response?.data?.user?.firstname);
+        setLastname(response?.data?.user?.lastname);
+        setAddress(response?.data?.user?.address);
+        setPhone(response?.data?.user?.phone);
+        setEmail(response?.data?.user?.email);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProfile();
+  }, [auth]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +69,7 @@ const UpdateProfile = () => {
 
   return (
     <div>
-      <h1>Update Profile</h1>
+      <h1>Profile</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="firstname">First Name</label>
         <input
