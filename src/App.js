@@ -1,16 +1,13 @@
 import "./App.css";
 import Register from "./Register";
+import Login from "./Login";
 
 function App() {
   return (
     <main className="App">
-      <Register />
+      <Login />
     </main>
   );
 }
-
-// function App() {
-//   return <div>Page in construction</div>;
-// }
 
 export default App;
