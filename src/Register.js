@@ -99,8 +99,7 @@ const Register = () => {
         <section>
           <h1>Success!</h1>
           <p>
-            {/* TODO: add link to sign in page */}
-            <a href="#">Sign In</a>
+            <a href="/login">Sign In</a>
           </p>
         </section>
       ) : (
@@ -208,8 +207,7 @@ const Register = () => {
           <p>
             Already have an account? <br />
             <span className="line">
-              {/* TODO: add link to sign in page */}
-              <a href="#">Sign In</a>
+              <a href="/login">Sign In</a>
             </span>
           </p>
         </section>
