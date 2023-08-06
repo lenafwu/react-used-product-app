@@ -28,7 +28,7 @@ const Ads = () => {
   }, []);
 
   return (
-    <article>
+    <article className="ads">
       <h2>Ads list</h2>
       {ads?.length ? (
         <ul>

@@ -111,7 +111,7 @@ const UpdateProfile = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <button>Update</button>
+        <button>Submit</button>
       </form>
     </div>
   );

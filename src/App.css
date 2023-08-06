@@ -182,3 +182,51 @@ a:hover {
   position: absolute;
   left: -9999px;
 }
+
+/* ads list */
+.ads {
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.ads h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ads ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ads li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.ads li p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.ads li p:first-of-type {
+  font-weight: bold;
+}
+
+.ads li p:nth-of-type(2) {
+  margin-top: 0.5rem;
+}
+
+.ads li p:last-of-type {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.ads p.no-ads {
+  font-size: 1.2rem;
+  font-style: italic;
+}
