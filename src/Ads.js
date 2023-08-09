@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "./api/axios";
+import useRefreshToken from "./hooks/useRefreshToken";
 
 const ADS_URL = "/ad";
 const Ads = () => {
   const [ads, setAds] = useState();
+  const refresh = useRefreshToken();
 
   useEffect(() => {
     let isMounted = true;
@@ -29,6 +31,7 @@ const Ads = () => {
 
   return (
     <article className="ads">
+      <button onClick={() => refresh()}>Refresh Token</button>
       <h2>Ads list</h2>
       {ads?.length ? (
         <ul>

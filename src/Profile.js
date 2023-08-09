@@ -13,9 +13,9 @@ const Profile = () => {
       try {
         const response = await axios.get(LOGIN_URL, {
           headers: {
-            withCredentials: true,
             Authorization: `Bearer ${auth.accessToken}`,
           },
+          withCredentials: true,
         });
         setUserProfile(response.data.user);
       } catch (err) {

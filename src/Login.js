@@ -41,14 +41,15 @@ const Login = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
+          withCredentials: true,
         }
       );
+
+      console.log(response);
       const accessToken = response?.data?.accessToken;
 
       setAuth({ user, accessToken });
-
       setUser("");
       setPwd("");
       navigate(from, { replace: true });

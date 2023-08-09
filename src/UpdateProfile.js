@@ -52,9 +52,9 @@ const UpdateProfile = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
             Authorization: `Bearer ${auth.accessToken}`,
           },
+          withCredentials: true,
         }
       );
       navigate("/profile");
