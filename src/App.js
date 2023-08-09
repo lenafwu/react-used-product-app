@@ -5,6 +5,7 @@ import Ads from "./Ads";
 import Profile from "./Profile";
 import Logout from "./Logout";
 import UpdateProfile from "./UpdateProfile";
+import Missing from "./Missing";
 import Layout from "./Layout";
 import RequireAuth from "./RequireAuth";
 import { Routes, Route } from "react-router-dom";
@@ -24,7 +25,7 @@ function App() {
           <Route path="/update-profile" element={<UpdateProfile />} />
           <Route path="/logout" element={<Logout />} />
         </Route>
-        {/* TODO: 404 page */}
+        <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
   );

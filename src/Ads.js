@@ -34,7 +34,7 @@ const Ads = () => {
         <ul>
           {ads.map((ad, i) => (
             <li key={i}>
-              <p>Titile: {ad?.title}</p>
+              <p>Title: {ad?.title}</p>
               <p>Description: {ad?.description}</p>
               {/* TODO: change posted by to username */}
               <p>Posted by: {ad?.postedBy}</p>

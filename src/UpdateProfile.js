@@ -7,7 +7,6 @@ const UPDATE_PROFILE_URL = "/api/profile";
 
 const UpdateProfile = () => {
   const { auth } = useAuth();
-  console.log();
   const navigate = useNavigate();
 
   const [firstname, setFirstname] = useState("");
@@ -58,7 +57,6 @@ const UpdateProfile = () => {
           },
         }
       );
-      console.log(response?.data);
       navigate("/profile");
 
       // TODO: check if update is successful
