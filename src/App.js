@@ -16,13 +16,14 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* TODO: public routes */}
-        <Route path="/" element={<Ads />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/ad/:id" element={<Ad />} />
 
         {/* TODO: wrap protected routes with PersistLogin component */}
         <Route element={<PersistLogin />}>
+          <Route path="/" element={<Ads />} />
+          <Route path="/ad/:id" element={<Ad />} />
           <Route element={<RequireAuth />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/update-profile" element={<UpdateProfile />} />

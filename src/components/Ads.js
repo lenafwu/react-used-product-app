@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useRefreshToken from "../hooks/useRefreshToken";
 import { Link } from "react-router-dom";
 
 const ADS_URL = "/ad";
 const Ads = () => {
   const [ads, setAds] = useState();
-  const refresh = useRefreshToken();
+  const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController(); // cancel request
     const getAds = async () => {
       try {
-        const response = await axios.get(ADS_URL, {
+        // const response = await axios.get(ADS_URL, {
+        //   signal: controller.signal,
+        // });
+        const response = await axiosPrivate.get(ADS_URL, {
           signal: controller.signal,
         });
         isMounted && setAds(response.data.ads);
@@ -32,12 +36,11 @@ const Ads = () => {
 
   return (
     <article className="ads">
-      <button onClick={() => refresh()}>Refresh Token</button>
       <h2>Ads list</h2>
       {ads?.length ? (
         <ul>
-          {ads.map((ad) => (
-            <li key={ad._id}>
+          {ads.map((ad, i) => (
+            <li key={i}>
               <p>Title: {ad?.title}</p>
               <p>Description: {ad?.description}</p>
               <p>Posted by: {ad?.postedBy.fullname}</p>

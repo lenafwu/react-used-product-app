@@ -4,7 +4,7 @@ import useAuth from "./useAuth";
 const REFRESH_TOKEN_URL = "/api/refresh";
 
 const useRefreshToken = () => {
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
   const refresh = async () => {
     const response = await axios.get(REFRESH_TOKEN_URL, {
