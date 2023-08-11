@@ -5,9 +5,9 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import useAuth from "./hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import axios from "./api/axios";
+import axios from "../api/axios";
 
 // TODO: add validation for user input
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -77,8 +77,8 @@ const Register = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            withCredentials: true,
           },
+          withCredentials: true,
         }
       );
       setSuccess(true);

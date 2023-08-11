@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "./api/axios";
-import useRefreshToken from "./hooks/useRefreshToken";
+import axios from "../api/axios";
+import useRefreshToken from "../hooks/useRefreshToken";
+import { Link } from "react-router-dom";
 
 const ADS_URL = "/ad";
 const Ads = () => {
@@ -35,13 +36,15 @@ const Ads = () => {
       <h2>Ads list</h2>
       {ads?.length ? (
         <ul>
-          {ads.map((ad, i) => (
-            <li key={i}>
+          {ads.map((ad) => (
+            <li key={ad._id}>
               <p>Title: {ad?.title}</p>
               <p>Description: {ad?.description}</p>
-              {/* TODO: change posted by to username */}
-              <p>Posted by: {ad?.postedBy}</p>
+              <p>Posted by: {ad?.postedBy.fullname}</p>
               <p>Price: {ad?.price}</p>
+              <Link className="line" to={`/ad/${ad._id}`}>
+                Detail
+              </Link>
             </li>
           ))}
         </ul>

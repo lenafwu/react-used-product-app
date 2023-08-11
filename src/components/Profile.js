@@ -1,7 +1,7 @@
-import useAuth from "./hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "./api/axios";
+import axios from "../api/axios";
 
 const LOGIN_URL = "/api/profile";
 const Profile = () => {

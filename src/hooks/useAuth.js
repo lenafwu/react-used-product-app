@@ -1,14 +1,12 @@
-import { useContext } from "react";
+import { useContext, useDebugValue } from "react";
 import AuthContext from "../context/AuthProvider";
 
 const useAuth = () => {
-  const { auth, setAuth } = useContext(AuthContext);
-
-  const logout = () => {
-    setAuth({});
-    localStorage.removeItem("auth");
-  };
-  return { auth, setAuth, logout };
+  const { auth } = useContext(AuthContext);
+  useDebugValue(auth, (auth) =>
+    auth?.accessToken ? "Authenticated" : "Not Authenticated"
+  );
+  return useContext(AuthContext);
 };
 
 export default useAuth;

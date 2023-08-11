@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import useAuth from "./hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import axios from "./api/axios";
+import axios from "../api/axios";
 
 const UPDATE_PROFILE_URL = "/api/profile";
 
@@ -9,6 +9,7 @@ const UpdateProfile = () => {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
+  // FIXME: rewrite
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [address, setAddress] = useState("");
