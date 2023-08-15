@@ -7,6 +7,7 @@ import UpdateProfile from "./components/UpdateProfile";
 import Missing from "./components/Missing";
 import Layout from "./components/Layout";
 import Ad from "./components/Ad";
+import AddEditAd from "./components/AddEditAd";
 import RequireAuth from "./components/RequireAuth";
 import PersistLogin from "./components/PersistLogin";
 import { Routes, Route } from "react-router-dom";
@@ -27,6 +28,7 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="/profile" element={<Profile />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
+            <Route path="/create-ad" element={<AddEditAd />} />
           </Route>
         </Route>
         {/* catch all */}

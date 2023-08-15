@@ -17,6 +17,9 @@ const Navbar = () => {
         <li>
           <a href="/">Home</a>
         </li>
+        <li>
+          <Link to="/create-ad">Post Ad</Link>
+        </li>
         {!auth?.accessToken ? (
           <>
             <li>
