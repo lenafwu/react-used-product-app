@@ -30,7 +30,7 @@ const QASection = ({ questions, adID, fetchQuestions }) => {
   //  const handleSubmit = (e) => {};
   return (
     <div className="qa-section">
-      <h2>Questions</h2>
+      <h3>Questions</h3>
       <div>
         {showCreateForm ? (
           <CreateQuestion
@@ -38,22 +38,28 @@ const QASection = ({ questions, adID, fetchQuestions }) => {
             onToggle={handleToggleCreateQuestion}
           />
         ) : (
-          <button onClick={handleToggleCreateQuestion}>Ask a question</button>
+          <>
+            <button onClick={handleToggleCreateQuestion}>Ask a question</button>
+            <ul>
+              {questions?.length ? (
+                questions.map((q) => (
+                  <li key={q._id}>
+                    <p>Question title: {q.title}</p>
+                    <p>Description: {q.description}</p>
+                    {q.answer ? (
+                      <p>Answer: {q.answer}</p>
+                    ) : (
+                      <p>No answer yet.</p>
+                    )}
+                  </li>
+                ))
+              ) : (
+                <p>No questions found </p>
+              )}
+            </ul>
+          </>
         )}
       </div>
-      <ul>
-        {questions?.length ? (
-          questions.map((q) => (
-            <li key={q._id}>
-              <p>Question title: {q.title}</p>
-              <p>Description: {q.description}</p>
-              {q.answer ? <p>Answer: {q.answer}</p> : <p>No answer yet.</p>}
-            </li>
-          ))
-        ) : (
-          <p>No questions found </p>
-        )}
-      </ul>
     </div>
   );
 };

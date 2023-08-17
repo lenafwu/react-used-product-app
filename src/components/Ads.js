@@ -36,7 +36,7 @@ const Ads = () => {
 
   return (
     <article className="ads">
-      <h2>Ads list</h2>
+      <h2>Products on Sale</h2>
       {ads?.length ? (
         <ul>
           {ads.map((ad, i) => (
@@ -44,7 +44,7 @@ const Ads = () => {
               <p>Title: {ad?.title}</p>
               <p>Description: {ad?.description}</p>
               <p>Posted by: {ad?.postedBy.fullname}</p>
-              <p>Price: {ad?.price}</p>
+              <p>Price: ${ad?.price}</p>
               <Link className="line" to={`/ad/${ad._id}`}>
                 Detail
               </Link>

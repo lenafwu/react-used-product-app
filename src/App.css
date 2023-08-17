@@ -98,15 +98,15 @@ form {
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 1rem;
 }
 
 label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   font-size: 1.2rem;
+  width: 100%; /* Set width */
 }
 
 input[type="text"],
@@ -202,19 +202,20 @@ a:hover {
 
 .ads li {
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 1.5rem;
   border: 1px solid #ccc;
   border-radius: 0.25rem;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .ads li p {
-  margin: 0;
   font-size: 1.2rem;
+  text-align: left;
 }
 
 .ads li p:first-of-type {
   font-weight: bold;
+  text-align: center;
 }
 
 .ads li p:nth-of-type(2) {
@@ -229,6 +230,92 @@ a:hover {
 .ads p.no-ads {
   font-size: 1.2rem;
   font-style: italic;
+}
+
+/* Add Edit Ad */
+/* Form Container */
+.form-container {
+  margin: 2rem auto;
+  max-width: 600px;
+  padding: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Common Input Fields Styles */
+.form-input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px #ccc;
+  font-size: 1.2rem;
+  width: 100%; /* Set width */
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+/* Textarea */
+.form-input.description-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Ad Component styles */
+.ad-container {
+  text-align: left;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 2rem;
+  padding-left: 25%;
+  padding-right: 25%;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ad-container h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.ad-container p {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.ad-container p span {
+  font-weight: bold;
+  color: #333;
+}
+
+.ad-action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ad-action-buttons a,
+.ad-action-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  background-color: #ddd;
+  color: #333;
+}
+
+.ad-action-buttons a:hover,
+.ad-action-buttons button:hover {
+  background-color: #bbb;
+}
+
+.loading-message {
+  font-size: 1.5rem;
+  color: #777;
 }
 
 /* footer */

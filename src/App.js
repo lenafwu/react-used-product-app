@@ -29,6 +29,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/update-profile" element={<UpdateProfile />} />
             <Route path="/create-ad" element={<AddEditAd />} />
+            <Route path="/edit-ad/:id" element={<AddEditAd />} />
           </Route>
         </Route>
         {/* catch all */}

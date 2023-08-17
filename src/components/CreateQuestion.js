@@ -34,7 +34,10 @@ const CreateQuestion = ({ onQuestionSubmit, onToggle }) => {
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          className="form-input description-textarea"
+          required
         />
+
         <button type="submit">Submit</button>
         <button type="button" onClick={onToggle}>
           Cancel

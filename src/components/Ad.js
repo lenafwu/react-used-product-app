@@ -3,12 +3,14 @@ import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import useAuth from "../hooks/useAuth";
 import QASection from "./QASection";
+import { Link } from "react-router-dom";
 const AD_URL = "/ad/";
 
 const Ad = () => {
   const { auth } = useAuth();
   const { id } = useParams();
   const [ad, setAd] = useState();
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     fetchAd();
@@ -24,19 +26,21 @@ const Ad = () => {
   };
 
   return (
-    <div>
+    <div className="ad-container">
       {ad ? (
         <>
           <h2>{ad.title}</h2>
           {auth?.user === ad.postedBy.username && (
-            <div>
-              <button>Edit</button>
-              <button>Delete</button>
+            <div className="ad-action-buttons">
+              <Link to={`/edit-ad/${ad._id}`}>Edit</Link>
+              <Link>Deactivate</Link>
             </div>
           )}
           <p>Posted by: {ad.postedBy.fullname}</p>
           <p>Description: {ad.description}</p>
           <p>Price: {ad.price}</p>
+          <p>Start Date: {ad.startDate.split("T")[0]}</p>
+          <p>End Date: {ad.expiryDate.split("T")[0]}</p>
           <QASection
             questions={ad.questions}
             adID={ad._id}
@@ -44,7 +48,7 @@ const Ad = () => {
           />
         </>
       ) : (
-        <p>Loading...</p>
+        <p className="loading-message">Loading...</p>
       )}
     </div>
   );

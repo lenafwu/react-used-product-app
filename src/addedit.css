@@ -1,0 +1,56 @@
+/* Container styles */
+div {
+  width: 100%;
+  max-width: 600px; /* Maximum width */
+  margin: 0 auto; /* Centering */
+  padding: 20px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading styles */
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Label styles */
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Input and Textarea styles */
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical; /* Allow vertical resize */
+  min-height: 80px; /* Minimum height */
+}
+
+/* Button styles */
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
