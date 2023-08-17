@@ -45,6 +45,7 @@ const Ads = () => {
               <p>Description: {ad?.description}</p>
               <p>Posted by: {ad?.postedBy.fullname}</p>
               <p>Price: ${ad?.price}</p>
+              {ad?.isActive ? <p>Active</p> : <p>Inactive</p>}
               <Link className="line" to={`/ad/${ad._id}`}>
                 Detail
               </Link>

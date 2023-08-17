@@ -18,6 +18,9 @@ const AddEditAd = () => {
   const [startDate, setStartDate] = useState(today);
   const [expiryDate, setExpiryDate] = useState(today);
 
+
+  
+
   useEffect(() => {
     const fetchAd = async () => {
       try {
@@ -45,22 +48,9 @@ const AddEditAd = () => {
       setIsValid(false);
     }
   }, [title, description, price, startDate, expiryDate]);
-  const deactivateAd = async () => {
-    const ad = {
-      title,
-      description,
-      price,
-      startDate,
-      expiryDate,
-      isActive: false,
-    };
-    try {
-      const response = await axiosPrivate.put(AD_URL + id, ad);
-      console.log(response);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 

@@ -1,8 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import useAuth from "../hooks/useAuth";
 import QASection from "./QASection";
+import ConfirmModal from "./ConfirmModal";
 import { Link } from "react-router-dom";
 const AD_URL = "/ad/";
 
@@ -10,7 +12,8 @@ const Ad = () => {
   const { auth } = useAuth();
   const { id } = useParams();
   const [ad, setAd] = useState();
-  const [isEditing, setIsEditing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
     fetchAd();
@@ -25,6 +28,34 @@ const Ad = () => {
     }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const toggleAdActivation = async () => {
+    const updatedAd = { ...ad, isActive: !ad.isActive };
+    try {
+      const response = await axiosPrivate.put(AD_URL + id, ad);
+      setAd(updatedAd);
+    } catch (err) {
+      console.log(err);
+    }
+
+    closeModal();
+  };
+
+  const handleActivateButtonClick = () => {
+    if (ad?.isActive) {
+      openModal();
+    } else {
+      toggleAdActivation();
+    }
+  };
+
   return (
     <div className="ad-container">
       {ad ? (
@@ -33,7 +64,14 @@ const Ad = () => {
           {auth?.user === ad.postedBy.username && (
             <div className="ad-action-buttons">
               <Link to={`/edit-ad/${ad._id}`}>Edit</Link>
-              <Link>Deactivate</Link>
+              <Link onClick={handleActivateButtonClick}>
+                {ad?.isActive ? "Deactivate" : "Activate"}
+              </Link>
+              <ConfirmModal
+                isOpen={isModalOpen}
+                onClose={closeModal}
+                onConfirm={toggleAdActivation}
+              />
             </div>
           )}
           <p>Posted by: {ad.postedBy.fullname}</p>
@@ -41,6 +79,7 @@ const Ad = () => {
           <p>Price: {ad.price}</p>
           <p>Start Date: {ad.startDate.split("T")[0]}</p>
           <p>End Date: {ad.expiryDate.split("T")[0]}</p>
+          {ad.isActive ? <p>Active</p> : <p>Inactive</p>}
           <QASection
             questions={ad.questions}
             adID={ad._id}
