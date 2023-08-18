@@ -1,42 +1,28 @@
 import { useState, useEffect } from "react";
-import axios from "../api/axios";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import useRefreshToken from "../hooks/useRefreshToken";
 import { Link } from "react-router-dom";
 
-const ADS_URL = "/ad";
-const Ads = () => {
+const MyAds = () => {
   const [ads, setAds] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController(); // cancel request
     const getAds = async () => {
       try {
-        // const response = await axios.get(ADS_URL, {
-        //   signal: controller.signal,
-        // });
-        const response = await axiosPrivate.get(ADS_URL, {
-          signal: controller.signal,
-        });
-        isMounted && setAds(response.data.ads);
+        const response = await axiosPrivate.get("/ad/user");
+        setAds(response.data.ads);
       } catch (err) {
         console.log(err);
       }
+      setIsLoading(false);
     };
-
     getAds();
-
-    return () => {
-      isMounted = false;
-      controller.abort();
-    };
   }, []);
 
   return (
     <article className="ads">
-      <h2>Products on Sale</h2>
+      <h2>My Products</h2>
       {ads?.length ? (
         <ul>
           {ads.map((ad, i) => (
@@ -66,4 +52,4 @@ const Ads = () => {
   );
 };
 
-export default Ads;
+export default MyAds;

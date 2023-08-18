@@ -18,9 +18,6 @@ const AddEditAd = () => {
   const [startDate, setStartDate] = useState(today);
   const [expiryDate, setExpiryDate] = useState(today);
 
-
-  
-
   useEffect(() => {
     const fetchAd = async () => {
       try {
@@ -46,12 +43,14 @@ const AddEditAd = () => {
     if (new Date(startDate) > new Date(expiryDate)) {
       setErrMsg("Start date must be before expiry date");
       setIsValid(false);
+    } else {
+      setErrMsg(null);
+      setIsValid(true);
     }
   }, [title, description, price, startDate, expiryDate]);
 
-
-  
   const handleSubmit = async (e) => {
+    console.log("handleSubmit");
     e.preventDefault();
 
     setErrMsg(null);
@@ -108,7 +107,10 @@ const AddEditAd = () => {
           <input
             type="number"
             value={price}
-            onChange={(e) => setPrice(parseFloat(e.target.value))}
+            onChange={(e) => {
+              const value = parseFloat(e.target.value);
+              setPrice(isNaN(value) ? 0 : value);
+            }}
             className="form-input"
             required
           />
@@ -136,9 +138,7 @@ const AddEditAd = () => {
           />
         </label>
         <p className={errMsg ? "errmsg" : "offscreen"}>{errMsg}</p>
-        <button disabled={!isValid ? true : false} type="submit">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

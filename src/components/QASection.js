@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import CreateQuestion from "./CreateQuestion";
+import AnswerQuestion from "./AnswerQuestion";
 import axios from "../api/axios";
 
 const QASection = ({ questions, adID, fetchQuestions }) => {
@@ -16,7 +17,6 @@ const QASection = ({ questions, adID, fetchQuestions }) => {
         },
       });
 
-      console.log("Question created", response.data);
       fetchQuestions();
       setShowCreateForm(false);
     } catch (err) {
@@ -44,12 +44,19 @@ const QASection = ({ questions, adID, fetchQuestions }) => {
               {questions?.length ? (
                 questions.map((q) => (
                   <li key={q._id}>
-                    <p>Question title: {q.title}</p>
-                    <p>Description: {q.description}</p>
+                    <p>Question: {q.title}</p>
+                    <p>Q: {q.description}</p>
                     {q.answer ? (
-                      <p>Answer: {q.answer}</p>
+                      <p>A: {q.answer}</p>
                     ) : (
-                      <p>No answer yet.</p>
+                      <>
+                        <p>No answer yet.</p>
+                        <AnswerQuestion
+                          adId={adID}
+                          questionId={q._id}
+                          fetchQuestions={fetchQuestions}
+                        />
+                      </>
                     )}
                   </li>
                 ))

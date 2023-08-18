@@ -39,7 +39,7 @@ const Ad = () => {
   const toggleAdActivation = async () => {
     const updatedAd = { ...ad, isActive: !ad.isActive };
     try {
-      const response = await axiosPrivate.put(AD_URL + id, ad);
+      const response = await axiosPrivate.put(AD_URL + id, updatedAd);
       setAd(updatedAd);
     } catch (err) {
       console.log(err);
@@ -61,6 +61,7 @@ const Ad = () => {
       {ad ? (
         <>
           <h2>{ad.title}</h2>
+          <img src="/color-placeholder.png" alt="" />
           {auth?.user === ad.postedBy.username && (
             <div className="ad-action-buttons">
               <Link to={`/edit-ad/${ad._id}`}>Edit</Link>
@@ -75,8 +76,8 @@ const Ad = () => {
             </div>
           )}
           <p>Posted by: {ad.postedBy.fullname}</p>
-          <p>Description: {ad.description}</p>
-          <p>Price: {ad.price}</p>
+          <p>{ad.description}</p>
+          <p>${ad.price}</p>
           <p>Start Date: {ad.startDate.split("T")[0]}</p>
           <p>End Date: {ad.expiryDate.split("T")[0]}</p>
           {ad.isActive ? <p>Active</p> : <p>Inactive</p>}

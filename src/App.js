@@ -8,6 +8,7 @@ import Missing from "./components/Missing";
 import Layout from "./components/Layout";
 import Ad from "./components/Ad";
 import AddEditAd from "./components/AddEditAd";
+import MyAds from "./components/MyAds";
 import RequireAuth from "./components/RequireAuth";
 import PersistLogin from "./components/PersistLogin";
 import { Routes, Route } from "react-router-dom";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/update-profile" element={<UpdateProfile />} />
             <Route path="/create-ad" element={<AddEditAd />} />
             <Route path="/edit-ad/:id" element={<AddEditAd />} />
+            <Route path="/my-ads" element={<MyAds />} />
           </Route>
         </Route>
         {/* catch all */}

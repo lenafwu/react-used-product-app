@@ -14,6 +14,7 @@ const Navbar = () => {
   return (
     <nav className="nav">
       <ul>
+        <img className="logo" src="/shopping-bag.png" alt="" />
         <li>
           <a href="/">Home</a>
         </li>
@@ -33,6 +34,9 @@ const Navbar = () => {
           <>
             <li>
               <a href="/profile">Profile</a>
+            </li>
+            <li>
+              <Link to="/my-ads">My Advertisements</Link>
             </li>
             <li>
               <Link onClick={signOut}>Log Out ({auth?.user})</Link>

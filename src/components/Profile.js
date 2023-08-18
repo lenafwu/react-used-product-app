@@ -26,14 +26,16 @@ const Profile = () => {
   }, [auth]);
 
   return (
-    <div>
+    <div className="profile-container">
       <h1>Profile</h1>
-      <p>Username: {userProfile.username}</p>
-      <p>Name: {userProfile.firstname + " " + userProfile.lastname}</p>
-      <p>Address: {userProfile.address}</p>
-      <p>Email: {userProfile.email}</p>
-      <p>Phone: {userProfile.phone}</p>
-      <p>Created: {new Date(userProfile.created).toLocaleDateString()}</p>
+      <div className="p-container">
+        <p>Username: {userProfile.username}</p>
+        <p>Name: {userProfile.firstname + " " + userProfile.lastname}</p>
+        <p>Address: {userProfile.address}</p>
+        <p>Email: {userProfile.email}</p>
+        <p>Phone: {userProfile.phone}</p>
+        <p>Created: {new Date(userProfile.created).toLocaleDateString()}</p>
+      </div>
       <Link to="/update-profile">
         <button>Update</button>
       </Link>
